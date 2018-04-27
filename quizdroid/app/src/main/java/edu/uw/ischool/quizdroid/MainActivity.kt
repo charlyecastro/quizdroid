@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.ListAdapter
 import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text2 ,topics)
 
-        listView.adapter = adapter
+        listView.adapter = adapter as ListAdapter?
 
         listView.setOnItemClickListener({ parent, v, position, id ->
             val intent = Intent(v.context, SecondActivity::class.java)
