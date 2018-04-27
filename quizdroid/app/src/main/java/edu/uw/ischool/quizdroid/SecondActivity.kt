@@ -27,56 +27,27 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-//        supportActionBar?.title = "Topic Overview"
-//
-//        val topicName = findViewById(R.id.topicName) as TextView
-//        val topicDesc = findViewById(R.id.topicDesc) as TextView
-//
-//        val beginButton = findViewById(R.id.begin) as Button
-//
-//        topicName.setText(intent.getStringExtra(TOPIC))
-//        topicDesc.setText(intent.getStringExtra(DESCRIPTION))
-//        val index = intent.getIntExtra(INDEX, 0)
-//
-//        beginButton.setOnClickListener({ v ->
-//            val intent = Intent(v.context, ThirdActivity::class.java)
-//
-//            intent.putExtra(INDEX, index)
-//            intent.putExtra(Q_INDEX, 0)
-//            intent.putExtra(COUNT, 0)
-//
-//            v.context.startActivity(intent)
-//        })
+        supportActionBar?.title = "Topic Overview"
 
 
         var fragmentManager = fragmentManager
         var fragment = OverviewFragment()
 
 
-        //if (savedInstanceState == null) {
             val topic = intent.getStringExtra(TOPIC)
             val desc = intent.getStringExtra(DESCRIPTION)
             val index = intent.getIntExtra(INDEX, 0)
-        //}
+
 
             val transaction = fragmentManager.beginTransaction()
             val bundle = Bundle()
             bundle.putString(TOPIC,topic)
             bundle.putString(DESCRIPTION,desc)
-            bundle.putInt(INDEX,0)
+            bundle.putInt(INDEX,index)
             fragment.arguments = bundle
             transaction.replace(R.id.fragment, fragment)
+            supportActionBar?.title = topic
             transaction.commit()
-
-//        if (null != fragment) {
-//            val ft = fragmentManager.beginTransaction()
-//            val bundle = Bundle()
-//            bundle.putString("EXTRA_TEXT", topic)
-//            fragment.arguments = bundle
-//            ft.replace(R.id.fragment_placeholder, fragment)
-//            ft.commit()
-
-
     }
 
 }

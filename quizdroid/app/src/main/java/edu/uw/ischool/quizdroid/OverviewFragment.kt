@@ -13,6 +13,11 @@ import edu.uw.ischool.quizdroid.MainActivity.Companion.TOPIC
 
 class OverviewFragment : Fragment() {
 
+    companion object {
+        val Q_INDEX = "qIndex"
+        val COUNT = "count"
+    }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val result = inflater?.inflate(R.layout.overview_fragment,container,false)
 
@@ -26,16 +31,19 @@ class OverviewFragment : Fragment() {
         val index = arguments!!.getInt(INDEX)
 
         val begin = result.findViewById(R.id.begin) as Button
+
         begin.setOnClickListener({
             val fragment = QuestionFragment()
             val transaction = fragmentManager.beginTransaction()
             val bundle = Bundle()
-            bundle.putString(TOPIC,topic)
-            bundle.putInt(INDEX,0)
+            bundle.putInt(INDEX,index)
+            bundle.putInt(COUNT, 0)
+            bundle.putInt(Q_INDEX, 0)
             fragment.arguments = bundle
             transaction.replace(R.id.fragment, fragment)
             transaction.commit()
         })
+
      return result
     }
 
