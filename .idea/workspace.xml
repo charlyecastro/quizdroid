@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d95e82e0-c748-41a0-8bb4-c355139c6f0c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/quizdroid/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/quizdroid/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/quizdroid/.idea/misc.xml" afterPath="$PROJECT_DIR$/quizdroid/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/quizdroid/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/quizdroid/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/AnswerFragment.kt" afterPath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/AnswerFragment.kt" />
+      <change beforePath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/MainActivity.kt" afterPath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/MainActivity.kt" />
+      <change beforePath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/OverviewFragment.kt" afterPath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/OverviewFragment.kt" />
+      <change beforePath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/QuestionFragment.kt" afterPath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/QuestionFragment.kt" />
+      <change beforePath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/SecondActivity.kt" afterPath="$PROJECT_DIR$/quizdroid/app/src/main/java/edu/uw/ischool/quizdroid/SecondActivity.kt" />
+      <change beforePath="$PROJECT_DIR$/quizdroid/app/src/main/res/layout/activity_second.xml" afterPath="$PROJECT_DIR$/quizdroid/app/src/main/res/layout/activity_second.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,11 +46,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">

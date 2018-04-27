@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 "It's like a book, but it can talk and move", "The real football", "Shit. I dont know")
 
 
-        val listView = findViewById(R.id.listView) as ListView
+        val listView = findViewById<ListView>(R.id.listView)
 
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text2 ,topics)
 
