@@ -1,5 +1,6 @@
 package edu.uw.ischool.quizdroid
 
+import android.annotation.SuppressLint
 import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
@@ -23,6 +24,7 @@ class SecondActivity : AppCompatActivity() {
         val COUNT = "count"
     }
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
