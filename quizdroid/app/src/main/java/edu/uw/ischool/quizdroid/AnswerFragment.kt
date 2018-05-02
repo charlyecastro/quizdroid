@@ -32,6 +32,8 @@ class AnswerFragment : Fragment() {
             var count = arguments!!.getInt(SecondActivity.COUNT, 0)
             val correct = answers[index][qIndex]
 
+       // arguments!!.getAr
+
              if (correct == submitted) {
                  count++
              }
