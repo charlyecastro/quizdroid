@@ -21,6 +21,7 @@ class OverviewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val result = inflater?.inflate(R.layout.overview_fragment,container,false)
 
+
         val topicName = result?.findViewById(R.id.topicName) as TextView
         val topic = arguments!!.getString(TOPIC)
         topicName.text = topic

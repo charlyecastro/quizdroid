@@ -14,25 +14,21 @@ import edu.uw.ischool.quizdroid.QuestionFragment.Companion.SELECTED
 
 class AnswerFragment : Fragment() {
 
-    val mathA = arrayOf("2", "a^2 + b^2 = c^2", "Physical Education")
-    val physicsA = arrayOf("mc^2", "3", "9.807 m/s^2")
-    val marvelA = arrayOf("Peter Parker", "Wolverine", "Walt Disney")
-    val moviesA = arrayOf("The Dark Knight", "Titanic", "The Room")
-    val soccerA = arrayOf("5", "Mo Salah", "Russia")
-    val randomA = arrayOf("Walt Disney", "The Office", "Yes")
-
-    val answers = arrayOf(mathA, physicsA, marvelA, moviesA, soccerA, randomA)
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val result = inflater?.inflate(R.layout.answer_fragment,container,false)
+
+        //getRepo
+        val app = QuizApp()
+        val repo = app.getRepository()
+        val topics = repo.getTopics()
 
             val index = arguments!!.getInt(MainActivity.INDEX, 0)
             var qIndex = arguments!!.getInt(SecondActivity.Q_INDEX, 0)
             val submitted = arguments!!.getString(SELECTED)
             var count = arguments!!.getInt(SecondActivity.COUNT, 0)
-            val correct = answers[index][qIndex]
+            val correctIndex = topics[index].quiz.answers!![qIndex]
+            val correct = topics[index].quiz.options!![qIndex][correctIndex]
 
-       // arguments!!.getAr
 
              if (correct == submitted) {
                  count++
