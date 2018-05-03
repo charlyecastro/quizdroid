@@ -29,7 +29,6 @@ class AnswerFragment : Fragment() {
             val correctIndex = topics[index].quiz.answers!![qIndex]
             val correct = topics[index].quiz.options!![qIndex][correctIndex]
 
-
              if (correct == submitted) {
                  count++
              }
@@ -66,8 +65,6 @@ class AnswerFragment : Fragment() {
 
             }
         })
-
-
         return result
     }
 }

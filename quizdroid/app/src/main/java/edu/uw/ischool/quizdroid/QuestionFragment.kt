@@ -76,9 +76,7 @@ class QuestionFragment : Fragment() {
             transaction.replace(R.id.fragment, fragment)
             transaction.commit()
         })
-
         return result
-
     }
 }
 

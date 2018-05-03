@@ -20,9 +20,6 @@ class QuizApp : Application() {
     }
 
     class Topic(var title: String?, var shortDesc: String?, var longDesc: String?, var quiz: Quiz) {
-//        fun get(): Quiz? {
-//            return this.quiz
-//        }
     }
 
     class TopicRepository {
@@ -100,6 +97,5 @@ class QuizApp : Application() {
             }
             return list
         }
-
     }
 }

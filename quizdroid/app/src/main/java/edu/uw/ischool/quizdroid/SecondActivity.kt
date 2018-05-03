@@ -9,10 +9,8 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import edu.uw.ischool.quizdroid.MainActivity.Companion.ANSWERS
 import edu.uw.ischool.quizdroid.MainActivity.Companion.DESCRIPTION
 import edu.uw.ischool.quizdroid.MainActivity.Companion.INDEX
-import edu.uw.ischool.quizdroid.MainActivity.Companion.QUESTIONS
 import edu.uw.ischool.quizdroid.MainActivity.Companion.TOPIC
 import org.w3c.dom.Text
 
