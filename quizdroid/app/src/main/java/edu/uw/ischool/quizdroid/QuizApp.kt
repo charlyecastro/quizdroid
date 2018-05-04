@@ -55,7 +55,8 @@ class QuizApp : Application() {
 
             try {
                 input = BufferedInputStream(connection.inputStream).use { it.reader().use { reader -> reader.readText() } }
-            } finally {
+            }
+            finally {
                 connection.disconnect()
             }
 
