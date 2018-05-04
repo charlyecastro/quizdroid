@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         //getRepo
         val app = QuizApp()
         val repo = app.getRepository()
-        val topics = repo.getTopics()
+        val topics = repo.getTops()
 
         val listView = findViewById<ListView>(R.id.listView) as ListView
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text2 ,repo.getList())
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(v.context, SecondActivity::class.java)
             //Log.i("test", "position " + position + " topic " + topics[position].title)
             intent.putExtra(TOPIC,topics[position].title)
-            intent.putExtra(DESCRIPTION, topics[position].longDesc)
+            intent.putExtra(DESCRIPTION, topics[position].desc)
             intent.putExtra(INDEX, position)
 
             v.context.startActivity(intent)

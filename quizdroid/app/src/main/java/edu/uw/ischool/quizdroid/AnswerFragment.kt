@@ -20,14 +20,14 @@ class AnswerFragment : Fragment() {
         //getRepo
         val app = QuizApp()
         val repo = app.getRepository()
-        val topics = repo.getTopics()
+        val topics = repo.getTops()
 
             val index = arguments!!.getInt(MainActivity.INDEX, 0)
             var qIndex = arguments!!.getInt(SecondActivity.Q_INDEX, 0)
             val submitted = arguments!!.getString(SELECTED)
             var count = arguments!!.getInt(SecondActivity.COUNT, 0)
-            val correctIndex = topics[index].quiz.answers!![qIndex]
-            val correct = topics[index].quiz.options!![qIndex][correctIndex]
+            val correctIndex = topics[index].questions[qIndex].answer!! - 1
+            val correct = topics[index].questions[qIndex].answers!![correctIndex]
 
              if (correct == submitted) {
                  count++
@@ -39,7 +39,7 @@ class AnswerFragment : Fragment() {
             val scoreText = result?.findViewById(R.id.score) as TextView
             val btn = result?.findViewById(R.id.button) as Button
 
-            if (qIndex == 3) {
+            if (qIndex == topics[index].questions.size) {
                 btn.text = "Finish"
             }
 

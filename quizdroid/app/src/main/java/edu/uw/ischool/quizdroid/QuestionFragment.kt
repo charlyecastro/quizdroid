@@ -26,7 +26,7 @@ class QuestionFragment : Fragment() {
         //getRepo
         val app = QuizApp()
         val repo = app.getRepository()
-        val topics = repo.getTopics()
+        val topics = repo.getTops()
 
         val result = inflater?.inflate(R.layout.question_fragment,container,false)
 
@@ -44,7 +44,7 @@ class QuestionFragment : Fragment() {
 
 
         quesNum.text = "Question " + (qIndex + 1)
-        question.text = topics[index].quiz.questions!![qIndex]
+        question.text = topics[index].questions[qIndex].text!!
 
 
         val btnArray = arrayOf(R.id.radioButton,
@@ -56,7 +56,7 @@ class QuestionFragment : Fragment() {
 
         for (btn in btnArray) {
             val button = result?.findViewById(btn) as RadioButton
-            button.text = topics[index].quiz.options!![qIndex][optionIndex]
+            button.text = topics[index].questions[qIndex].answers!![optionIndex]
             optionIndex++
             button.setOnClickListener {
                 submit.setVisibility(View.VISIBLE)
