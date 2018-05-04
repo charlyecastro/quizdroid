@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         val TOPIC = "Topic"
         val DESCRIPTION = "Description"
         val INDEX = "Index"
+        val NUMQ = "numQ"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,16 +26,18 @@ class MainActivity : AppCompatActivity() {
         val repo = app.getRepository()
         val topics = repo.getTops()
 
-        val listView = findViewById<ListView>(R.id.listView) as ListView
+        val listView = findViewById(R.id.listView) as ListView
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text2 ,repo.getList())
         listView.adapter = adapter
 
         listView.setOnItemClickListener({ parent, v, position, id ->
             val intent = Intent(v.context, SecondActivity::class.java)
+            val num = topics[position].questions.size
             //Log.i("test", "position " + position + " topic " + topics[position].title)
             intent.putExtra(TOPIC,topics[position].title)
             intent.putExtra(DESCRIPTION, topics[position].desc)
             intent.putExtra(INDEX, position)
+            intent.putExtra(NUMQ, num)
 
             v.context.startActivity(intent)
         })

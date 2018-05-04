@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import edu.uw.ischool.quizdroid.MainActivity.Companion.DESCRIPTION
 import edu.uw.ischool.quizdroid.MainActivity.Companion.INDEX
+import edu.uw.ischool.quizdroid.MainActivity.Companion.NUMQ
 import edu.uw.ischool.quizdroid.MainActivity.Companion.TOPIC
 import org.w3c.dom.Text
 
@@ -37,6 +38,7 @@ class SecondActivity : AppCompatActivity() {
             val topic = intent.getStringExtra(TOPIC)
             val desc = intent.getStringExtra(DESCRIPTION)
             val index = intent.getIntExtra(INDEX, 0)
+            val numQ = intent.getIntExtra(NUMQ, 0)
 
 
             val transaction = fragmentManager.beginTransaction()
@@ -44,6 +46,7 @@ class SecondActivity : AppCompatActivity() {
             bundle.putString(TOPIC,topic)
             bundle.putString(DESCRIPTION,desc)
             bundle.putInt(INDEX,index)
+            bundle.putInt(NUMQ,numQ)
             fragment.arguments = bundle
             transaction.replace(R.id.fragment, fragment)
             supportActionBar?.title = topic

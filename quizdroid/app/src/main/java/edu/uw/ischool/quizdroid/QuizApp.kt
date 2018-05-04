@@ -7,17 +7,22 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.*
 import java.io.*
+import android.os.AsyncTask
+import org.json.JSONArray
+import java.io.BufferedInputStream
+import java.net.HttpURLConnection
+import java.net.URL
 
 
 class QuizApp : Application() {
 
-
     companion object {
-          var topics: Array<Topic> =  arrayOf(Topic("Loading!",
-         "Loading!", arrayListOf(Quiz("What is fire?", 1, arrayOf("hello"))) ) )
-
+          lateinit var topics: Array<Topic>
+//                  =  arrayOf(Topic("Loading!",
+//         "Loading!", arrayListOf(Quiz("What is fire?", 1, arrayOf("hello"))) ) )
 
     }
+
     override fun onCreate() {
                 super.onCreate()
         Log.i("QuizApp", "Loaded!")
@@ -27,19 +32,47 @@ class QuizApp : Application() {
         return TopicRepository()
     }
 
-
     class Quiz(var text: String?, var answer: Int?, var answers: Array<String>?) {
     }
 
     class Topic(var title: String?, var desc: String?, var questions: ArrayList<Quiz>) {
     }
 
-    class TopicRepository {
+    class TopicRepository : AsyncTask<String, String, String>{
+
+       // val top = ArrayList<Topic>()
+        var url = ""
+
+        constructor() {
+            url = "http://tednewardsandbox.site44.com/questions.json"
+            execute(url).get()
+        }
+
+        override fun doInBackground(vararg p0: String?): String {
+            val connection = URL(url).openConnection() as HttpURLConnection
+
+            var input = ""
+
+            try {
+                input = BufferedInputStream(connection.inputStream).use { it.reader().use { reader -> reader.readText() } }
+            } finally {
+                connection.disconnect()
+            }
+
+            val obj = JSONArray(input)
+//            Log.i("test", obj.toString())
+//            Log.i("input",input)
+
+            val gson = GsonBuilder().create()
+            topics = gson.fromJson(input, Array<Topic>::class.java)
+//            println(topics[0].title)
+//            println(topics[0].desc)
+            return input
+        }
+
 
         fun getTops(): Array<Topic> {
-            fetchJson()
             return topics
-            
         }
 
         fun getList(): List<String> {
@@ -50,30 +83,54 @@ class QuizApp : Application() {
             return list
         }
 
-        fun fetchJson() {
 
-            var top : Array<Topic>
 
-            val url = "http://tednewardsandbox.site44.com/questions.json"
-            val request = Request.Builder().url(url).build()
+        //        init {
+//            val url = "http://tednewardsandbox.site44.com/questions.json"
+//            val request = Request.Builder().url(url).build()
+//
+//            val client = OkHttpClient()
+//            client.newCall(request).enqueue(object: Callback {
+//
+//                override fun onResponse(call: Call?, response: Response?) {
+//                    val body = response?.body()?.string()
+//                    //println(body)
+//
+//                    val gson = GsonBuilder().create()
+//                    topics = gson.fromJson(body, Array<Topic>::class.java)
+//                }
+//
+//                override fun onFailure(call: Call?, e: IOException?) {
+//                    Log.e("ERROR", "failed to execute request")
+//                }
+//
+//            } )
+//        }
 
-            val client = OkHttpClient()
-            client.newCall(request).enqueue(object: Callback {
-
-                override fun onResponse(call: Call?, response: Response?) {
-                    val body = response?.body()?.string()
-                    println(body)
-
-                    val gson = GsonBuilder().create()
-                    topics = gson.fromJson(body, Array<Topic>::class.java)
-                }
-
-                override fun onFailure(call: Call?, e: IOException?) {
-                    Log.e("ERROR", "failed to execute request")
-                }
-
-            } )
-        }
+//        fun fetchJson() {
+//
+//            var top : Array<Topic>
+//
+//            val url = "http://tednewardsandbox.site44.com/questions.json"
+//            val request = Request.Builder().url(url).build()
+//
+//            val client = OkHttpClient()
+//            client.newCall(request).enqueue(object: Callback {
+//
+//                override fun onResponse(call: Call?, response: Response?) {
+//                    val body = response?.body()?.string()
+//                    //println(body)
+//
+//                    val gson = GsonBuilder().create()
+//                    topics = gson.fromJson(body, Array<Topic>::class.java)
+//                }
+//
+//                override fun onFailure(call: Call?, e: IOException?) {
+//                    Log.e("ERROR", "failed to execute request")
+//                }
+//
+//            } )
+//        }
     }
 
 }

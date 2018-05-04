@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import edu.uw.ischool.quizdroid.MainActivity.Companion.DESCRIPTION
 import edu.uw.ischool.quizdroid.MainActivity.Companion.INDEX
+import edu.uw.ischool.quizdroid.MainActivity.Companion.NUMQ
 import edu.uw.ischool.quizdroid.MainActivity.Companion.TOPIC
 
 class OverviewFragment : Fragment() {
@@ -30,8 +31,12 @@ class OverviewFragment : Fragment() {
         topicDesc.text = arguments!!.getString(DESCRIPTION)
 
         val index = arguments!!.getInt(INDEX)
+        val numQ = arguments!!.getInt(NUMQ)
 
         val begin = result.findViewById(R.id.begin) as Button
+
+        val numQText = result.findViewById(R.id.numQ) as TextView
+        numQText.text =  "Number of Questions: " + numQ
 
         begin.setOnClickListener({
             val fragment = QuestionFragment()

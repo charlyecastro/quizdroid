@@ -90,14 +90,14 @@
                     card_view:layout_constraintTop_toBottomOf="@+id/topicName" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/numQ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="3 Questions"
+                    android:text="questions"
                     android:textStyle="bold"
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintEnd_toEndOf="parent"
