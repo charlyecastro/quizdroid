@@ -8,10 +8,11 @@ This is an app that quizzes the user on trivial topics
 - [Fragments]( https://developer.android.com/guide/components/fragments)
 - [BufferedInputStream](https://developer.android.com/reference/java/io/BufferedInputStream)
 - [AsyncTask](https://developer.android.com/reference/android/os/AsyncTask)
+- [SharedPreferences](https://developer.android.com/training/data-storage/shared-preferences)
 
 
 #### JSON
-* I made my own custom  [JSON](https://charlyecastro.github.io/myJSON/myQuestions.json) file that has my own unique quiz 
+* I made my own custom  [JSON](https://charlyecastro.github.io/myJSON/myQuestions.json) file that has my own unique quiz
 * Also used The supplied [JSON](http://tednewardsandbox.site44.com/questions.json) file
 
 #### Libraries
