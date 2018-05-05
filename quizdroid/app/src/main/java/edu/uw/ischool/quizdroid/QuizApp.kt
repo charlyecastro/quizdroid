@@ -1,6 +1,7 @@
 package edu.uw.ischool.quizdroid
 
 import android.app.Application
+import android.content.Context
 import android.os.Environment
 import android.util.Log
 import com.google.gson.Gson
@@ -8,6 +9,7 @@ import com.google.gson.GsonBuilder
 import okhttp3.*
 import java.io.*
 import android.os.AsyncTask
+import android.preference.PreferenceManager
 import org.json.JSONArray
 import java.io.BufferedInputStream
 import java.net.HttpURLConnection
@@ -17,7 +19,8 @@ import java.net.URL
 class QuizApp : Application() {
 
     companion object {
-          lateinit var topics: Array<Topic>
+        lateinit var topics: Array<Topic>
+        lateinit var source :String
 //                  =  arrayOf(Topic("Loading!",
 //         "Loading!", arrayListOf(Quiz("What is fire?", 1, arrayOf("hello"))) ) )
 
@@ -26,6 +29,10 @@ class QuizApp : Application() {
     override fun onCreate() {
                 super.onCreate()
         Log.i("QuizApp", "Loaded!")
+    }
+
+    fun setSource(input : String) {
+        source = input
     }
 
     fun getRepository(): TopicRepository {
@@ -44,14 +51,19 @@ class QuizApp : Application() {
         var url = ""
         var url2 = ""
 
+
         constructor() {
+
             url2 = "https://charlyecastro.github.io/myJSON/myQuestions.json"
             url = "http://tednewardsandbox.site44.com/questions.json"
+
             execute(url).get()
         }
 
         override fun doInBackground(vararg p0: String?): String {
-            val connection = URL(url2).openConnection() as HttpURLConnection
+
+            println(source)
+            val connection = URL(source).openConnection() as HttpURLConnection
 
             var input = ""
 
