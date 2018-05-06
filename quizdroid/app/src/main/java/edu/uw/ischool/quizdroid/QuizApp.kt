@@ -61,8 +61,6 @@ class QuizApp : Application() {
         }
 
         override fun doInBackground(vararg p0: String?): String {
-
-            println(source)
             val connection = URL(source).openConnection() as HttpURLConnection
 
             var input = ""

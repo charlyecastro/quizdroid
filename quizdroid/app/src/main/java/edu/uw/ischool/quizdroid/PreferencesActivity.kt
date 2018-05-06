@@ -46,12 +46,10 @@ class PreferencesActivity : AppCompatActivity() {
             if(b) {
                 check = true
                 json = "https://charlyecastro.github.io/myJSON/myQuestions.json"
-                println("TRUEEEE")
 
             } else {
                 check = false
                 json = "http://tednewardsandbox.site44.com/questions.json"
-                println("FALLSEEE")
             }
         })
 

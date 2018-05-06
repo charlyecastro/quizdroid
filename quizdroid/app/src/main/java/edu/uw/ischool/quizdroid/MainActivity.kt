@@ -14,6 +14,7 @@ import edu.uw.ischool.quizdroid.PreferencesActivity.Companion.DOWNLOAD
 import edu.uw.ischool.quizdroid.PreferencesActivity.Companion.JSON
 import edu.uw.ischool.quizdroid.PreferencesActivity.Companion.SOURCE
 
+//https://charlyecastro.github.io/myJSON/myQuestions.json
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         val preferences = getSharedPreferences("pref", Context.MODE_WORLD_READABLE)
         var json = preferences.getString("json", "")
-        Log.i("json", json)
 
         val app = QuizApp()
         app.setSource(json)
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         listView.setOnItemClickListener({ parent, v, position, id ->
             val intent = Intent(v.context, SecondActivity::class.java)
             val num = topics[position].questions.size
-            //Log.i("test", "position " + position + " topic " + topics[position].title)
             intent.putExtra(TOPIC,topics[position].title)
             intent.putExtra(DESCRIPTION, topics[position].desc)
             intent.putExtra(INDEX, position)
@@ -70,7 +69,6 @@ class MainActivity : AppCompatActivity() {
         when (item?.itemId) {
 
             R.id.preferences -> {
-                println("item1")
                 val intent = Intent(this , PreferencesActivity::class.java)
                 startActivity(intent)
                 return super.onOptionsItemSelected(item)
