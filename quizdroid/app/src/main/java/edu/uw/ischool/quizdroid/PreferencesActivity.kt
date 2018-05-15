@@ -59,8 +59,8 @@ class PreferencesActivity : AppCompatActivity() {
         editor.putBoolean("check", check)
 
         btnSave.setOnClickListener({v ->
+            Toast.makeText(this, json, Toast.LENGTH_LONG).show()
             val intent = Intent(v.context, MainActivity::class.java)
-
             val preferences = getSharedPreferences("pref", Context.MODE_WORLD_READABLE)
             val editor = preferences.edit()
             editor.putString("json", json)

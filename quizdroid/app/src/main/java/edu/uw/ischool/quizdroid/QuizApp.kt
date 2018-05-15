@@ -1,7 +1,11 @@
 package edu.uw.ischool.quizdroid
 
 import android.app.Application
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Environment
 import android.util.Log
 import com.google.gson.Gson
@@ -10,6 +14,7 @@ import okhttp3.*
 import java.io.*
 import android.os.AsyncTask
 import android.preference.PreferenceManager
+import android.widget.Toast
 import org.json.JSONArray
 import java.io.BufferedInputStream
 import java.net.HttpURLConnection
@@ -21,9 +26,6 @@ class QuizApp : Application() {
     companion object {
         lateinit var topics: Array<Topic>
         lateinit var source :String
-//                  =  arrayOf(Topic("Loading!",
-//         "Loading!", arrayListOf(Quiz("What is fire?", 1, arrayOf("hello"))) ) )
-
     }
 
     override fun onCreate() {
@@ -61,10 +63,10 @@ class QuizApp : Application() {
         }
 
         override fun doInBackground(vararg p0: String?): String {
+
+
             val connection = URL(source).openConnection() as HttpURLConnection
-
             var input = ""
-
             try {
                 input = BufferedInputStream(connection.inputStream).use { it.reader().use { reader -> reader.readText() } }
             }
@@ -73,7 +75,6 @@ class QuizApp : Application() {
             }
 
             val obj = JSONArray(input)
-
             val gson = GsonBuilder().create()
             topics = gson.fromJson(input, Array<Topic>::class.java)
             return input
@@ -91,28 +92,6 @@ class QuizApp : Application() {
             }
             return list
         }
-
-        //        init {
-//            val url = "http://tednewardsandbox.site44.com/questions.json"
-//            val request = Request.Builder().url(url).build()
-//
-//            val client = OkHttpClient()
-//            client.newCall(request).enqueue(object: Callback {
-//
-//                override fun onResponse(call: Call?, response: Response?) {
-//                    val body = response?.body()?.string()
-//                    //println(body)
-//
-//                    val gson = GsonBuilder().create()
-//                    topics = gson.fromJson(body, Array<Topic>::class.java)
-//                }
-//
-//                override fun onFailure(call: Call?, e: IOException?) {
-//                    Log.e("ERROR", "failed to execute request")
-//                }
-//
-//            } )
-//        }
     }
 
 }
